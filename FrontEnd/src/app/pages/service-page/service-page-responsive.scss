@@ -1,0 +1,17 @@
+@import '../../../scss/abstracts/variables';
+
+.service-page {
+    &__container {
+        @media screen and (min-width: 1600px) {
+            &-form {
+                min-height: 70vh;
+            }
+
+            &-result {
+                &-loading {
+                    height: 83vh;
+                }
+            }
+        }
+    }
+}

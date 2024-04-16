@@ -1,0 +1,142 @@
+@import '../../../scss/abstracts/variables';
+@import '../../../scss/abstracts/mixins';
+@import '../../../scss/base/animations';
+
+
+
+.navbar {
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3rem 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        animation: .8s slideToDown ease-in-out;
+    }
+
+    &-logo {
+        & svg {
+            width: 75%;
+            fill: #8F7EF3;
+        }
+    }
+
+    &-mobile-bars {
+        display: none;
+    }
+
+    &-list {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        gap: 2rem;
+
+        &-item {
+
+    
+            &-link {
+                text-decoration: none;
+                color: black;
+                position: relative;
+                font-size: 1.6rem;
+
+                &:hover {
+                    &::after {
+                        display: block;
+                        position: absolute;
+                        content: '';
+                        width: 100%;
+                        height: .5rem;
+                        border-radius: 2rem;
+                        background-color: #8F7EF3;
+                        animation: .4s increaseSubilinear;
+                    }
+                }
+            }
+        }
+
+        &-button {
+            &-link {
+                @include button;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &-user-icon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.349);
+        border-radius: 20rem;
+        padding: .3rem;
+        cursor: pointer;
+        transition: 200ms all;
+
+        &:hover {
+            background-color: white;
+        }
+
+        &-figure {
+            display: flex;
+
+            &-img {
+                width: 5.5rem;
+                border-radius: 50%;
+            }
+
+            &-drop {
+                width: 2.5rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        &-logo {
+            & svg {
+                width: 60%;
+                fill: #8F7EF3;
+            }
+        }
+
+        &-mobile-bars {
+            display: block;
+            position: relative;
+            z-index: 300;
+
+            &-icon {
+                width: 3rem;
+                fill: black;
+            }
+        }
+
+         
+
+        &-list {
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background-color: white;
+            z-index: 10;
+            bottom: 0;
+            left: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            
+
+            &.active {
+                animation: .5s slideToRight ease-in-out;
+                left: 0;
+            }
+
+            &.deactive {
+                animation: .5s slideToLeft ease-in-out;
+            }
+        }
+    }
+
+  
+}

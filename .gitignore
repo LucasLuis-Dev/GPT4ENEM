@@ -1,7 +1,47 @@
-/node_modules
-/.env
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
 /dist
-/logs
-/.cache
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+FrontEnd/node_modules
+BackEnd/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+FrontEnd/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+Frontend/.angular/cache
+Frontend/.sass-cache/
+/connect.lock
 /coverage
-/serviceAccountKey.json
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+BackEnd/.env
+BackEnd/serviceAccountKey.json
+FrontEnd/.env
+

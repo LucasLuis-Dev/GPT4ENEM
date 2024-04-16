@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: darken(white, 10%);
+    overflow-x: hidden;
+}
+
+@media screen and (min-width: 1600px) {
+    body {
+        zoom: 120%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+}

@@ -1,0 +1,43 @@
+
+<div class="service-page__container">
+    <app-navbar></app-navbar>
+    <form [formGroup]="serviceForm" class="service-page__container-form" method="POST"  (ngSubmit)="inviteData()">
+
+        <h1 class="service-page__container-form-title">Insira o Link do Youtube</h1>
+        <span class="service-page__container-form-subtitle">✨ Veja a mágia acontecer ✨</span>
+        <input formControlName="linkUrl"  class="service-page__container-form-input" type="url" placeholder="Digite o Link do Youtube 🔗" required>
+    
+        <span class="service-page__container-form-subtitle service-page__container-form-subtitle-m-top">Escolha o Serviço Desejado:</span>
+        <ul class="service-page__container-form-list">
+            <li class="service-page__container-form-list-service" [ngClass]="{'clicado': selectedItemIndex === 0}" (click)="onItemClick(0)">
+                <img class="service-page__container-form-list-service-image" src="../../../../../assets/images/file_9079107.png" alt="">
+                <h3 class="service-page__container-form-list-service-title">Transcrever Audio</h3>
+            </li>
+            <li class="service-page__container-form-list-service" [ngClass]="{'clicado': selectedItemIndex === 1}" (click)="onItemClick(1)">
+                <img class="service-page__container-form-list-service-image" src="../../../../../assets/images/documentation_12238166.png" alt="">
+                <h3 class="service-page__container-form-list-service-title">Criar Resumo</h3>
+            </li>
+    
+            <li class="service-page__container-form-list-service" [ngClass]="{'clicado': selectedItemIndex === 2}" (click)="onItemClick(2)">
+                <img class="service-page__container-form-list-service-image" src="../../../../../assets/images/magnifying-glass_5719385.png" alt="">
+                <h3 class="service-page__container-form-list-service-title">Verificar Cobertura de Conteúdo ENEM</h3>
+            </li>
+        </ul>
+    
+        <input class="service-page__container-form-button service-page__container-form-button-primary-color" type="submit" value="Enviar">
+    
+    </form>
+
+    <div class="service-page__container-result" *ngIf="displayService">
+        <div class="service-page__container-result-loading" *ngIf="displayLoading">
+            <dotlottie-player src="../../../assets/loader.json" background="transparent" speed="1" class="service-page__container-result-loading-animation" direction="1" playMode="normal" loop  autoplay></dotlottie-player>
+            <p class="service-page__container-result-loading-paragraph">{{ textDisplay }}</p>
+        </div>
+
+        <div class="service-page__container-result-service" *ngIf="displayResults" [innerHTML]="getContentWithoutHeadAndFooter()">
+            
+        </div>
+    </div>
+    
+    
+</div>
