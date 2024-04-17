@@ -1,8 +1,3 @@
-
-<center><img src="https://cdn.discordapp.com/attachments/965066624556232737/1229947417248661544/Captura_de_tela_2024-01-20_093411-removebg-preview.png?ex=663188cb&is=661f13cb&hm=a591f4bac8d189ca654a4cc3eeff78dd4e1aa2b92394f88acbce70cc210d26f9&"> </center>
-
-<br>
-
 # GPT4ENEM 🎯
 O GPT4ENEM é uma plataforma inovadora desenvolvida para facilitar a vida dos alunos que se preparam para o Exame Nacional do Ensino Médio (ENEM). Com uma variedade de recursos, essa ferramenta se destaca por sua conveniência e eficiência, oferecendo aos estudantes uma maneira única de acessar conteúdos essenciais de preparação. Desenvolvido como projeto final da cadeira de IF977 Engenharia de Software, ministrada pelo professor Vinicius Cardoso Garcia, no curso de Sistemas de Informação do Centro de Informática (CIn) da Universidade Federal de Pernambuco (UFPE), essa plataforma inovadora visa simplificar e aprimorar o processo de estudo para o ENEM.
 
