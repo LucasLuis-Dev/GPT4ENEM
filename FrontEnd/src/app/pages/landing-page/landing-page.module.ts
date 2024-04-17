@@ -8,7 +8,6 @@ import { HighlightComponent } from './components/highlight/highlight.component';
 import { BenefitsComponent } from './components/benefits/benefits.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 
-
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -23,7 +22,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     LayoutModule,
-    ComponentsModule
-  ]
+    ComponentsModule,
+  ],
 })
 export class LandingPageModule { }

@@ -55,17 +55,17 @@
 
     <ul class="navbar-list" *ngIf="userLoggedIn == false" [ngClass]="{'deactive': !menuOpen && menuVisited, 'active': menuOpen}">
         <li class="navbar-list-item">
-            <a  class="navbar-list-item-link" href="#our-services">
+            <a  class="navbar-list-item-link" href="#our-services" (click)="toogleMenu()">
                 Serviços
             </a>
         </li>
         <li class="navbar-list-item">
-            <a  class="navbar-list-item-link" href="#about">
+            <a  class="navbar-list-item-link" href="#about" (click)="toogleMenu()"> 
                 Sobre
             </a>
         </li>
         <li class="navbar-list-item">
-            <a  class="navbar-list-item-link" href="#benefits">
+            <a  class="navbar-list-item-link" href="#benefits" (click)="toogleMenu()">
                 Beneficios
             </a>
         </li>

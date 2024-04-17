@@ -11,10 +11,25 @@
         border-radius: 2rem;
         cursor: pointer;
         display: none;
+        outline: none;
+        transition: all 200ms ease-in-out;
+
+        &:active {
+            transform: scale(1.25);
+        }
 
         &.active {
             display: block;
-            animation: 0.5s slideToTop ease-in-out;
+            animation: 0.5s showArrow ease-in-out forwards;
+        }
+
+        &.deactive {
+            display: block;
+            animation: 0.5s closeArrow ease-in-out forwards;
+        }
+
+        &:focus {
+            outline: none;
         }
         
         &-svg {

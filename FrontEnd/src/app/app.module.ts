@@ -20,7 +20,6 @@ import { getAuth } from "firebase/auth";
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 
-
 const firebaseConfig = {
   apiKey: environment.API_KEY_FIREBASE,
   authDomain: environment.AUTH_DOMAIN,
