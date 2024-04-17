@@ -1,10 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+FrontEnd/dist
+FrontEnd/tmp
+FrontEnd/out-tsc
+FrontEnd/bazel-out
+
+BackEnd/dist
+BackEnd/tmp
+BackEnd/out-tsc
+BackEnd/bazel-out
 
 # Node
 FrontEnd/node_modules

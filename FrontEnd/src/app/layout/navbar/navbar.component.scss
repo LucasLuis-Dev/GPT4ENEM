@@ -2,8 +2,6 @@
 @import '../../../scss/abstracts/mixins';
 @import '../../../scss/base/animations';
 
-
-
 .navbar {
     &__container {
         display: flex;
@@ -31,6 +29,15 @@
         justify-content: space-between;
         list-style: none;
         gap: 2rem;
+
+        &.active {
+            animation: .5s slideToRight ease-in-out forwards;
+            left: 0;
+        }
+
+        &.deactive {
+            animation: .5s slideToLeft ease-in-out forwards;
+        }
 
         &-item {
 
@@ -126,15 +133,6 @@
             align-items: center;
             gap: 3rem;
             
-
-            &.active {
-                animation: .5s slideToRight ease-in-out;
-                left: 0;
-            }
-
-            &.deactive {
-                animation: .5s slideToLeft ease-in-out;
-            }
         }
     }
 

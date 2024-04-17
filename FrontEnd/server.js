@@ -9,7 +9,7 @@ let port = process.env.PORT;
 
 let env = process.env;
 
-const distPath = "dist/gpt4-enem";
+const distPath = "./dist/gpt4-enem";
 
 const files = fs.readdirSync(`${distPath}/`);
 
