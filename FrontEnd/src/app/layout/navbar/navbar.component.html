@@ -43,12 +43,17 @@
 
 
     <div class="navbar-mobile-bars" *ngIf="menuBarsDisplayed" (click)="toogleMenu()">
-        <img class="navbar-mobile-bars-icon" src="../../../assets/images/bars-solid.svg" alt="">
+        @if (!menuOpen) {
+            <img class="navbar-mobile-bars-icon" src="../../../assets/images/bars-solid.svg" alt="">
+        }  @else {
+            <img class="navbar-mobile-bars-icon" src="../../../assets/images/xmark-solid.svg">
+        }
+        
     </div>
 
     
 
-    <ul class="navbar-list" *ngIf="userLoggedIn == false">
+    <ul class="navbar-list" *ngIf="userLoggedIn == false" [ngClass]="{'deactive': !menuOpen && menuVisited, 'active': menuOpen}">
         <li class="navbar-list-item">
             <a  class="navbar-list-item-link" href="#our-services">
                 Serviços

@@ -1,6 +1,8 @@
 @import '../../../scss/abstracts/variables';
 @import '../../../scss/abstracts/mixins';
 @import '../../../scss/base/animations';
+
+
 .navbar {
     &-aside {
         position: absolute;
@@ -26,7 +28,7 @@
 
         &-toogle {
             position: absolute;
-            right: 100%;
+            right: 99.85%;
             display: flex;
             background-color: white;
             border-radius: 2rem 0 0 2rem;
@@ -48,6 +50,7 @@
                 padding-bottom: 2rem;
                 gap: 2rem;
                 border-bottom: .1rem solid rgba(128, 128, 128, 0.418);
+                flex-wrap: wrap;
     
                 &-img {
                     width: 7rem;
@@ -118,19 +121,12 @@
             padding: 3rem;
             border-radius: 2rem 0 0 2rem;
 
-            &.visible {
-                animation: .4s openAsideMobile ease-in-out forwards;
-            }
-    
-            &.fade-out-animation {
-                animation: .4s closeAsideMobile ease-in-out;
-            }
 
             &-user {
                 &-icon-informations {
         
                     &-img {
-                        width: 6rem;
+                        width: 8.5rem;
                     }
     
                     &-texts {
