@@ -33,27 +33,45 @@ export class AuthFormComponent implements OnInit {
 
   submitForm() {
     const emailControl = this.authForm.get('email');
-    const passwordControl = this.authForm.get('password');
-
+    const passwordControl = this.authForm.get('pswd');
+  
     if (emailControl && passwordControl) {
-        const email = emailControl.value;
-        const password = passwordControl.value;
+      const email = emailControl.value;
+      const password = passwordControl.value;
+  
+      if (!email || !password) {
+        console.error('Por favor, preencha todos os campos.');
+        return;
+      }
+  
+      if (this.type === 'Cadastrar') {
+        const passwordConfirmControl = this.authForm.get('pswdConfirm');
+  
+        if (passwordConfirmControl) {
+          const passwordConfirm = passwordConfirmControl.value;
 
-        if (this.type === 'Cadastro') {
+          console.log(password,passwordConfirm)
+  
+          if (password === passwordConfirm) {
             this.createUserWithEmailAndPassword(email, password);
-        } else if (this.type === 'Login') {
-            this.signInWithEmailAndPassword(email, password);
+          } else {
+            console.error('As senhas precisam ser iguais');
+          }
         }
-    } else {
-        console.error('Os controles de e-mail ou senha estão indefinidos.');
+      } else if (this.type === 'Login') {
+        this.signInWithEmailAndPassword(email, password);
+        console.log('login feito')
+      }
     }
   }
+  
 
 
   createUserWithEmailAndPassword(email: string, password: string): void {
       this.authService.createUserWithEmailAndPasswordForms(email, password)
       .then(() => {
         this.router.navigate(['/login']);
+        
       })
       .catch((error) => {
         console.error(error)
@@ -79,26 +97,6 @@ export class AuthFormComponent implements OnInit {
       .catch((error) => {
         console.error(error)
       });
-  }
-
-  signInWithMicrosoft(): void {
-    this.authService.signInWithMicrosoft()
-    .then(() => {
-      this.router.navigate(['/service-page']);
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-  }
-
-  signInWithFacebook(): void {
-    this.authService.signInWithFacebook()
-    .then(() => {
-      this.router.navigate(['/service-page']);
-    })
-    .catch((error) => {
-      console.error(error)
-    })
   }
 
 }
