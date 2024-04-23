@@ -25,7 +25,7 @@
         </div>
             
         <div class="authform-inputs__container-decoration">
-            <input class="authform-inputs__container-decoration-input" type="password" formControlName="pswd" placeholder="Digite a sua melhor senha 🔑" name="pswd">
+            <input class="authform-inputs__container-decoration-input" type={{pswdInputModel}} formControlName="pswd" placeholder="Digite a sua melhor senha 🔑" name="pswd">
             <figure class="authform-inputs__container-decoration-figure">
                 <svg class="authform-inputs__container-decoration-figure-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"  transform="rotate(-45)matrix(1, 0, 0, -1, 0, 0)">
 
@@ -40,7 +40,7 @@
         </div>
 
         <div *ngIf="type == 'Cadastrar'" class="authform-inputs__container-decoration">
-            <input  class="authform-inputs__container-decoration-input" type="password" formControlName="pswdConfirm" placeholder="Confirme a sua Senha 🧐" name="pswd-confirm">
+            <input  class="authform-inputs__container-decoration-input" type={{pswdInputModel}} formControlName="pswdConfirm" placeholder="Confirme a sua Senha 🧐" name="pswd-confirm">
             <figure class="authform-inputs__container-decoration-figure">
                 <svg fill="#000000" class="authform-inputs__container-decoration-figure-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 
@@ -54,6 +54,11 @@
                     
                     </svg>
             </figure>
+        </div>
+
+        <div class="authform-inputs__container-password-visibility">
+            <label class="authform-inputs__container-password-visibility-label" for="togglePasswordCheckbox">Mostrar Senha</label>
+            <input class="authform-inputs__container-password-visibility-checkbox" type="checkbox" id="togglePasswordCheckbox" (change)="togglePasswordVisibility()">
         </div>
 
         
@@ -103,6 +108,11 @@
             <a [routerLink]="['/login']">Clique aqui</a>
        </p>
     </div>
- 
-   
 </form>
+
+<div class="notification__container" [ngClass]="{'active': displayNotification, 'deactive': !displayNotification && notificationInitialized}">
+    <div class="notification__container-box">
+        <p>{{ notificationText }}</p>
+    </div>
+</div>
+

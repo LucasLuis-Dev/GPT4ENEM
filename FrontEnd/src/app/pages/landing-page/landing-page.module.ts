@@ -7,6 +7,7 @@ import { OurServicesComponent } from './components/our-services/our-services.com
 import { HighlightComponent } from './components/highlight/highlight.component';
 import { BenefitsComponent } from './components/benefits/benefits.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     OurServicesComponent,
     HighlightComponent,
     BenefitsComponent,
+    HowItWorksComponent
   ],
   exports: [
     LandingPageComponent

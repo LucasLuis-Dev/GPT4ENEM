@@ -2,12 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
-  styleUrls: ['./auth-form.component.scss','./auth-form-responsive.scss']
+  styleUrls: ['./auth-form.component.scss','./auth-form-responsive.component.scss', './auth-form-notification.component.scss']
 })
 
 export class AuthFormComponent implements OnInit {
@@ -17,6 +18,10 @@ export class AuthFormComponent implements OnInit {
   pswd: string = '';
   pswdConfirm: string = '';
   authForm: FormGroup;
+  displayNotification: boolean = false;
+  notificationText: string = '';
+  notificationInitialized: boolean = false; 
+  pswdInputModel: string = 'password';
 
 
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder ) { 
@@ -56,6 +61,7 @@ export class AuthFormComponent implements OnInit {
             this.createUserWithEmailAndPassword(email, password);
           } else {
             console.error('As senhas precisam ser iguais');
+            this.notificationPopUp('As senhas precisam ser iguais')
           }
         }
       } else if (this.type === 'Login') {
@@ -70,11 +76,12 @@ export class AuthFormComponent implements OnInit {
   createUserWithEmailAndPassword(email: string, password: string): void {
       this.authService.createUserWithEmailAndPasswordForms(email, password)
       .then(() => {
-        this.router.navigate(['/login']);
-        
+          this.router.navigate(['/login']);
       })
       .catch((error) => {
-        console.error(error)
+        if (error.message.includes('auth/email-already-in-use')) {
+          this.notificationPopUp('A Conta do Usuário já Existe')
+        }
       });
   }
 
@@ -84,7 +91,9 @@ export class AuthFormComponent implements OnInit {
       this.router.navigate(['/service-page']);
     })
     .catch((error) => {
-      console.error(error)
+      if (error.message.includes('auth/invalid-credential')) {
+        this.notificationPopUp('Email ou Senha Incorretos')
+      }
     });
 
   }
@@ -98,5 +107,22 @@ export class AuthFormComponent implements OnInit {
         console.error(error)
       });
   }
+
+  notificationPopUp(text: string): void {
+    this.notificationInitialized = true;
+    this.displayNotification = true;
+    this.notificationText = text;
+    setInterval(() => {
+      this.displayNotification = false;
+    }, 7000)
+  }
+
+  togglePasswordVisibility() {
+    if (this.pswdInputModel == 'password') {
+      this.pswdInputModel = 'text';
+    } else {
+      this.pswdInputModel = 'password'
+    }
+}
 
 }

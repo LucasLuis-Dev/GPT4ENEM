@@ -25,9 +25,7 @@ export class AuthService {
           environment.USER = user
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error(error)
+          throw error;
         });
   }
 
@@ -47,7 +45,7 @@ export class AuthService {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error(error)
+        throw error;
       });
   }
 
