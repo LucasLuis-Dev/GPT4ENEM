@@ -1,8 +1,7 @@
 
 import request from 'supertest';
 import express, { Router } from 'express';
-import mainRouter from '../routes';  //Substitua pelo caminho correto para o seu arquivo de rotas
-
+import mainRouter from '../routes'; 
 const app = express();
 app.use('/', mainRouter);
 

@@ -1,4 +1,4 @@
-<form method="POST" [formGroup]="authForm" (ngSubmit)="signInWithEmailAndPassword" class="authform__container">
+<form method="POST" [formGroup]="authForm" (ngSubmit)="submitForm()" class="authform__container">
     <h1 class="authform-title">{{ type }}</h1>
 
     <div class="authform-inputs__container">
@@ -25,7 +25,7 @@
         </div>
             
         <div class="authform-inputs__container-decoration">
-            <input class="authform-inputs__container-decoration-input" type="password" formControlName="pswd" placeholder="Digite a sua melhor senha 🔑" name="pswd">
+            <input class="authform-inputs__container-decoration-input" type={{pswdInputModel}} formControlName="pswd" placeholder="Digite a sua melhor senha 🔑" name="pswd">
             <figure class="authform-inputs__container-decoration-figure">
                 <svg class="authform-inputs__container-decoration-figure-svg" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"  transform="rotate(-45)matrix(1, 0, 0, -1, 0, 0)">
 
@@ -40,7 +40,7 @@
         </div>
 
         <div *ngIf="type == 'Cadastrar'" class="authform-inputs__container-decoration">
-            <input  class="authform-inputs__container-decoration-input" type="password" formControlName="pswdConfirm" placeholder="Confirme a sua Senha 🧐" name="pswd-confirm">
+            <input  class="authform-inputs__container-decoration-input" type={{pswdInputModel}} formControlName="pswdConfirm" placeholder="Confirme a sua Senha 🧐" name="pswd-confirm">
             <figure class="authform-inputs__container-decoration-figure">
                 <svg fill="#000000" class="authform-inputs__container-decoration-figure-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 
@@ -54,6 +54,11 @@
                     
                     </svg>
             </figure>
+        </div>
+
+        <div class="authform-inputs__container-password-visibility">
+            <label class="authform-inputs__container-password-visibility-label" for="togglePasswordCheckbox">Mostrar Senha</label>
+            <input class="authform-inputs__container-password-visibility-checkbox" type="checkbox" id="togglePasswordCheckbox" (change)="togglePasswordVisibility()">
         </div>
 
         
@@ -94,33 +99,6 @@
             Conectar com Google
             
         </button>
-
-        <button class="authform-others-button" (click)="signInWithMicrosoft()">
-            <svg class="authform-others-button-img" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#F35325" d="M1 1h6.5v6.5H1V1z"/><path fill="#81BC06" d="M8.5 1H15v6.5H8.5V1z"/><path fill="#05A6F0" d="M1 8.5h6.5V15H1V8.5z"/><path fill="#FFBA08" d="M8.5 8.5H15V15H8.5V8.5z"/></svg>
-            Conectar com Microsoft
-            
-        </button>
-
-        <button class="authform-others-button" (click)="signInWithFacebook()">
-            <svg class="authform-others-button-img" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    
-                <title>Facebook-color</title>
-                <desc>Created with Sketch.</desc>
-                <defs>
-            
-            </defs>
-                <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="Color-" transform="translate(-200.000000, -160.000000)" fill="#4460A0">
-                        <path d="M225.638355,208 L202.649232,208 C201.185673,208 200,206.813592 200,205.350603 L200,162.649211 C200,161.18585 201.185859,160 202.649232,160 L245.350955,160 C246.813955,160 248,161.18585 248,162.649211 L248,205.350603 C248,206.813778 246.813769,208 245.350955,208 L233.119305,208 L233.119305,189.411755 L239.358521,189.411755 L240.292755,182.167586 L233.119305,182.167586 L233.119305,177.542641 C233.119305,175.445287 233.701712,174.01601 236.70929,174.01601 L240.545311,174.014333 L240.545311,167.535091 C239.881886,167.446808 237.604784,167.24957 234.955552,167.24957 C229.424834,167.24957 225.638355,170.625526 225.638355,176.825209 L225.638355,182.167586 L219.383122,182.167586 L219.383122,189.411755 L225.638355,189.411755 L225.638355,208 L225.638355,208 Z" id="Facebook">
-            
-            </path>
-                    </g>
-                </g>
-            </svg>
-            Conectar com Facebook
-           
-        </button>
-        
      
         <p *ngIf="type == 'Login'" class="authform-others-paragraph">Ainda não possui uma conta?
              <a [routerLink]="['/register']">Clique aqui</a>
@@ -130,6 +108,11 @@
             <a [routerLink]="['/login']">Clique aqui</a>
        </p>
     </div>
- 
-   
 </form>
+
+<div class="notification__container" [ngClass]="{'active': displayNotification, 'deactive': !displayNotification && notificationInitialized}">
+    <div class="notification__container-box">
+        <p>{{ notificationText }}</p>
+    </div>
+</div>
+

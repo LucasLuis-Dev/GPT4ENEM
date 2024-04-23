@@ -6,6 +6,10 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./arrow-to-top.component.scss']
 })
 export class ArrowToTopComponent {
+
+  displayArrow: boolean = false;
+  activeArrow: boolean = false;
+
   constructor() {
     this.aparecerNaTela()
   }
@@ -13,12 +17,12 @@ export class ArrowToTopComponent {
   @HostListener('window:scroll', [])
   aparecerNaTela() {
     let altura = window.scrollY
-    const arrowToTop = document.querySelector('.arrow-to-top__container')
 
-    if (altura >= 600 && arrowToTop) {
-      arrowToTop.classList.add('active')
-    } else if (altura < 600 && arrowToTop) {
-      arrowToTop.classList.remove('active')
+    if (altura >= 600) {
+      this.displayArrow = true;
+      this.activeArrow = true;
+    } else if (altura < 600) {
+      this.displayArrow = false;
     }
   }
 

@@ -1,10 +1,8 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { RegisterModule } from './pages/register/register.module';
 
 
@@ -19,7 +17,6 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-
 
 const firebaseConfig = {
   apiKey: environment.API_KEY_FIREBASE,

@@ -1,0 +1,32 @@
+@import '../../../scss/abstracts/variables';
+@import '../../../scss/base/animations';
+
+.notification {
+    &__container {
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        top: -10%;
+        left: 10%;
+        text-align: center;
+        background: transparent;
+        z-index: 50;
+        
+        &.active {
+            animation: .5s showNotification ease-in-out forwards;
+        }
+
+        &.deactive {
+            animation: .5s closeNotification ease-in-out forwards;
+        }
+        &-box {
+            background: linear-gradient(90deg, rgba(145,129,244,1) 0%, rgba(80,56,237,1) 100%);
+            color: $color-white;
+            padding: 1rem 2rem;
+            width: fit-content;
+            border-radius: 20rem;
+        }
+    }
+}

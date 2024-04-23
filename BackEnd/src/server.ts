@@ -9,7 +9,7 @@ dotenv.config();
 const app: Express = express();
 
 const corsOptions ={
-  origin:'https://gpt4enem-production-1c80.up.railway.app', 
+  origin:'https://gpt4enem.onrender.com', 
   credentials:true,
   optionSuccessStatus:200
 }

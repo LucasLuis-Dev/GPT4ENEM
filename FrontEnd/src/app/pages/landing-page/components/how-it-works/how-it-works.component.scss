@@ -1,0 +1,66 @@
+@import '../../../../../scss/abstracts/variables';
+@import '../../../../../scss/abstracts/mixins';
+
+.how-it-works {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+
+        &-title {
+            font-size: 1.5em;
+        }
+
+        &-paragraph {
+            @include paragraph;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+        
+        &-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            list-style: none;
+            gap: 3rem;
+
+            &-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 2rem 3rem;
+
+                &:nth-child(3) {
+                    & img {
+                        width: 25%;
+                    }
+
+                }
+
+                &-svg {
+                    width: 30%;
+                    fill: $color-highlight;
+                }
+
+                &-paragraph {
+                    @include paragraph;
+                    text-align: center;
+                }
+            }
+        }
+        @media screen and (max-width: 480px) {
+            &-title {
+                text-align: center;
+            }
+            &-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    
+}

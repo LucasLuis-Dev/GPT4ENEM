@@ -1,5 +1,6 @@
 @import '../../../scss/abstracts/variables';
 @import '../../../scss/abstracts/mixins';
+@import '../../../scss/base/animations';
 
 .authform {
 
@@ -54,6 +55,26 @@
                     width: 2.5rem;
                     height: fit-content;
                     fill: white;
+                }
+            }
+        }
+
+        &-password-visibility {
+            display: flex;
+            gap: 0.5rem;     
+            
+            &-label {
+                font-size: 1.3rem;
+                color: $text-color;
+            }
+
+            & input[type="checkbox"] {
+                border-radius: 1rem;
+                border: none;
+
+                &:checked {
+                    background-color: $color-highlight;
+                    color: white;
                 }
             }
         }
@@ -116,3 +137,4 @@
         }
     }    
 }
+
